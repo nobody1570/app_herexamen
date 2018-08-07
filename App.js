@@ -3,6 +3,22 @@ import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
+
+class LoginScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Login screen</Text>
+        <Button
+          title="Login"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+      </View>
+    );
+  }
+}
+
+
 class HomeScreen extends React.Component {
   render() {
     return (
@@ -11,6 +27,10 @@ class HomeScreen extends React.Component {
         <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
+        />
+        <Button
+          title="Go to Login"
+          onPress={() => this.props.navigation.navigate('Login')}
         />
       </View>
     );
@@ -47,10 +67,11 @@ class DetailsScreen extends React.Component {
 
 const RootStack = createStackNavigator(
   {
+    Login: LoginScreen,
     Home: HomeScreen,
     Details: DetailsScreen,
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
   }
 );
