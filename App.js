@@ -20,10 +20,22 @@ class LoginScreen extends React.Component {
 
 
 class HomeScreen extends React.Component {
+
+  constructor(){
+
+      super();
+
+      this.state = {
+
+          Test:'-------'
+      }
+
+  }
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
+        <Text>{this.state.Test}</Text>
         <Button
           title="Go to Details"
           onPress={() => this.props.navigation.navigate('Details')}
@@ -32,7 +44,26 @@ class HomeScreen extends React.Component {
           title="Go to Login"
           onPress={() => this.props.navigation.navigate('Login')}
         />
+        <Button
+          title="Read data"
+          onPress={() => this.setState({
+
+           Test: "Data read"
+
+          })}
+        />
+        <Button
+          title="write data"
+          onPress={() => this.setState({
+
+           Test: "Data written to disk"
+
+          })}
+        />
+
+
       </View>
+
     );
   }
 }
