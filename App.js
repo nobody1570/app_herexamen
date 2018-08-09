@@ -34,7 +34,7 @@ class LoginScreen extends React.Component {
     onLogin() {
     const { username, password } = this.state;
 
-    Alert.alert('Credentials', `${username} + ${password}`);
+    //Alert.alert('Credentials', `${username} + ${password}`);
     this.props.navigation.navigate('Home');
   }
 
