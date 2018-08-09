@@ -1,6 +1,6 @@
 //using react navigation!
 import React , { Component } from 'react';
-import { Button, View, Text, Alert, TextInput, StyleSheet } from 'react-native';
+import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
@@ -75,13 +75,45 @@ class HomeScreen extends React.Component {
 
       this.state = {
 
-          Test:'-------'
-      }
+          test:'-------',
+          comment: '',
+          empty: ''
+      };
 
   }
+
+  onAdd() {
+  //add stuff
+  Alert.alert('Add', `works`);
+
+}
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//shows notes + locations
+
+//adding notes
+      <View style={styles.container}>
+
+      <ScrollView>
+
+      </ScrollView>
+
+
+      <TextInput
+        value={this.state.comment}
+        onChangeText={(comment) => this.setState({ comment })}
+        placeholder={'Comment'}
+        style={styles.input}
+      />
+
+      <Button
+        title={'Login'}
+        style={styles.input}
+        onPress={this.onAdd.bind(this)}
+      />
+
+      </View>
+    /*  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Home Screen</Text>
         <Text>{this.state.Test}</Text>
         <Button
@@ -110,7 +142,7 @@ class HomeScreen extends React.Component {
         />
 
 
-      </View>
+      </View>*/
 
     );
   }
