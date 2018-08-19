@@ -1,6 +1,6 @@
 //using react navigation!
 import React , { Component } from 'react';
-import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView } from 'react-native';
+import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
@@ -66,7 +66,17 @@ class LoginScreen extends React.Component {
   }
 }
 
-
+const styles2 = StyleSheet.create({
+  container: {
+   flex: 1,
+   paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
+  },
+})
 class HomeScreen extends React.Component {
 
   constructor(){
@@ -92,11 +102,54 @@ class HomeScreen extends React.Component {
 //shows notes + locations
 
 //adding notes
-      <View style={styles.container}>
 
-      <ScrollView>
-
-      </ScrollView>
+//https://stackoverflow.com/questions/51227070/react-native-having-static-and-dynamic-elements-in-flatlist
+      <View style={styles2.container}>
+      <FlatList
+          data={[
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+            {key: 'Devin'},
+            {key: 'Jackson'},
+            {key: 'James'},
+            {key: 'Joel'},
+            {key: 'John'},
+            {key: 'Jillian'},
+            {key: 'Jimmy'},
+            {key: 'Julie'},
+          ]}
+          renderItem={({item}) => <Text style={styles2.item}>{item.key}</Text>}
+        />
 
 
       <TextInput
@@ -107,7 +160,7 @@ class HomeScreen extends React.Component {
       />
 
       <Button
-        title={'Login'}
+        title={'Add'}
         style={styles.input}
         onPress={this.onAdd.bind(this)}
       />
