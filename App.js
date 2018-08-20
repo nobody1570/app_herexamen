@@ -3,6 +3,7 @@ import React , { Component } from 'react';
 import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
+var SampleArray=  ["ONE", "TWO"];
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -77,6 +78,9 @@ const styles2 = StyleSheet.create({
     height: 44,
   },
 })
+
+
+
 class HomeScreen extends React.Component {
 
   constructor(){
@@ -87,14 +91,20 @@ class HomeScreen extends React.Component {
 
           test:'-------',
           comment: '',
-          empty: ''
+          empty: '',
+
+
       };
 
   }
 
   onAdd() {
   //add stuff
-  Alert.alert('Add', `works`);
+  //Adding Items To Array.
+  SampleArray.push( this.state.comment.toString() );
+  // Showing the complete Array on Screen Using Alert.
+  Alert.alert(SampleArray.toString());
+  //Alert.alert('Add', `works`);
 
 }
   render() {
