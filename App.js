@@ -3,7 +3,6 @@ import React , { Component } from 'react';
 import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
-var SampleArray=  ["ONE", "TWO"];
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -92,7 +91,14 @@ class HomeScreen extends React.Component {
           test:'-------',
           comment: '',
           empty: '',
-
+          nextID: 7,
+          SampleArray: [
+          {key: 1, note: 'James'},
+          {key: 2, note: 'Joel'},
+          {key: 3, note: 'John'},
+          {key: 4, note: 'Jillian'},
+          {key: 5, note: 'Jimmy'},
+          {key: 6, note: 'Julie'}],
 
       };
 
@@ -101,9 +107,13 @@ class HomeScreen extends React.Component {
   onAdd() {
   //add stuff
   //Adding Items To Array.
-  SampleArray.push( this.state.comment.toString() );
+/*  var json = '{"key": '+nextID.toString()+', "note": '+this.state.comment.toString()+'}';
+  var obj = JSON.parse(json);
+this.state.SampleArray.push(obj);*/
+
+  //this.state.SampleArray.push( this.state.comment.toString() );
   // Showing the complete Array on Screen Using Alert.
-  Alert.alert(SampleArray.toString());
+  //Alert.alert(SampleArray.toString());
   //Alert.alert('Add', `works`);
 
 }
@@ -116,49 +126,11 @@ class HomeScreen extends React.Component {
 //https://stackoverflow.com/questions/51227070/react-native-having-static-and-dynamic-elements-in-flatlist
       <View style={styles2.container}>
       <FlatList
-          data={[
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-            {key: 'Devin'},
-            {key: 'Jackson'},
-            {key: 'James'},
-            {key: 'Joel'},
-            {key: 'John'},
-            {key: 'Jillian'},
-            {key: 'Jimmy'},
-            {key: 'Julie'},
-          ]}
-          renderItem={({item}) => <Text style={styles2.item}>{item.key}</Text>}
+          data = {this.state.SampleArray}
+
+
+          renderItem={({item}) => <Text style={styles2.item}>{item.note}</Text>}
+          keyExtractor={ (item, index) => index.toString() }
         />
 
 
