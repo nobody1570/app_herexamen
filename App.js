@@ -100,6 +100,8 @@ class HomeScreen extends React.Component {
           {key: 5, note: 'Jimmy'},
           {key: 6, note: 'Julie'}],
 
+
+
       };
 
   }
@@ -107,13 +109,17 @@ class HomeScreen extends React.Component {
   onAdd() {
   //add stuff
   //Adding Items To Array.
-/*  var json = '{"key": '+nextID.toString()+', "note": '+this.state.comment.toString()+'}';
-  var obj = JSON.parse(json);
-this.state.SampleArray.push(obj);*/
+ String json='{
+              "key":0,
+              "note":"placeholder",
+              }';
+ //var obj = JSON.parse(json);
+ //this.state.SampleArray.push(obj);
+ //this.state.nextID++;
 
   //this.state.SampleArray.push( this.state.comment.toString() );
   // Showing the complete Array on Screen Using Alert.
-  //Alert.alert(SampleArray.toString());
+  //Alert.alert(this.state.nextID.toString());
   //Alert.alert('Add', `works`);
 
 }
