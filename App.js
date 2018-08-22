@@ -110,9 +110,16 @@ class HomeScreen extends React.Component {
   //add stuff
   //Adding Items To Array.
  //var json='{"key":0, "note":"placeholder",}';
- this.state.test='{"key":0, "note":"placeholder"}';
+ this.state.test='{"key":'+this.state.nextID+', "note":"'+this.state.comment+'"}';
+ //this.state.test='{"key":0, "note":"placeholder"}';
  this.state.obj = JSON.parse(this.state.test.toString());
+
  this.setState({SampleArray:[...this.state.SampleArray, this.state.obj]})
+
+ //this.setState({nextID:this.state.nextID+1});
+ //this.setState({comment:''});
+
+
  //this.state.SampleArray.push(this.state.obj);
  //this.state.nextID++;
 
