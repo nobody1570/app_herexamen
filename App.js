@@ -105,29 +105,17 @@ class HomeScreen extends React.Component {
   }
 
   onAdd() {
-  //add stuff
+
   //Adding Items To Array.
- //var json='{"key":0, "note":"placeholder",}';
+  //quick tapping of add might cause bugs...
  if(this.state.comment!=''){
  var test='{"key":'+this.state.nextID+', "note":"'+this.state.comment+'"}';
- //this.state.test='{"key":0, "note":"placeholder"}';
  var obj = JSON.parse(test.toString());
 
  this.setState((prevState)=>{return {SampleArray:[...prevState.SampleArray, obj],nextID:prevState.nextID+1,comment:''};})
-
+ //Key is unique, checked with code below.
+ //Alert.alert(obj.key.toString());
 }
-
- //this.setState({nextID:this.state.nextID+1});
- //this.setState({comment:''});
-
-
- //this.state.SampleArray.push(this.state.obj);
- //this.state.nextID++;
-
-  //this.state.SampleArray.push( this.state.comment.toString() );
-  // Showing the complete Array on Screen Using Alert.
-  //Alert.alert(this.state.obj.note.toString());
-  //Alert.alert('Add', `works`);
 
 }
   render() {
@@ -161,36 +149,6 @@ class HomeScreen extends React.Component {
       />
 
       </View>
-    /*  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Text>{this.state.Test}</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Details')}
-        />
-        <Button
-          title="Go to Login"
-          onPress={() => this.props.navigation.navigate('Login')}
-        />
-        <Button
-          title="Read data"
-          onPress={() => this.setState({
-
-           Test: "Data read"
-
-          })}
-        />
-        <Button
-          title="write data"
-          onPress={() => this.setState({
-
-           Test: "Data written to disk"
-
-          })}
-        />
-
-
-      </View>*/
 
     );
   }
