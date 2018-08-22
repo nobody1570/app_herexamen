@@ -88,8 +88,6 @@ class HomeScreen extends React.Component {
 
       this.state = {
 
-          test:'',
-          obj: null,
           comment: '',
           nextID: 7,
           SampleArray: [
@@ -110,11 +108,11 @@ class HomeScreen extends React.Component {
   //add stuff
   //Adding Items To Array.
  //var json='{"key":0, "note":"placeholder",}';
- this.state.test='{"key":'+this.state.nextID+', "note":"'+this.state.comment+'"}';
+ var test='{"key":'+this.state.nextID+', "note":"'+this.state.comment+'"}';
  //this.state.test='{"key":0, "note":"placeholder"}';
- this.state.obj = JSON.parse(this.state.test.toString());
+ var obj = JSON.parse(test.toString());
 
- this.setState({SampleArray:[...this.state.SampleArray, this.state.obj]})
+ this.setState({SampleArray:[...this.state.SampleArray, obj]})
 
  //this.setState({nextID:this.state.nextID+1});
  //this.setState({comment:''});
