@@ -1,6 +1,6 @@
 //using react navigation!
 import React , { Component } from 'react';
-import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList } from 'react-native';
+import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList, TouchableWithoutFeedback } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
@@ -118,6 +118,17 @@ class HomeScreen extends React.Component {
 }
 
 }
+
+actionOnRow(item) {
+  //works! item is JSON object.
+   //console.log('Selected Item :',JSON.stringify(item));
+
+   //change screen and pass data
+
+   this.props.navigation.navigate('Details',{comment: item.note});
+
+}
+
   render() {
     return (
 //shows notes + locations
@@ -130,7 +141,16 @@ class HomeScreen extends React.Component {
           data = {this.state.SampleArray}
 
 
-          renderItem={({item}) => <Text style={styles2.item}>{item.note}</Text>}
+          renderItem={({item}) => (
+            <TouchableWithoutFeedback onPress={ () => this.actionOnRow(item)}>
+
+              <View>
+                <Text style={styles2.item}>{item.note}</Text>
+              </View>
+
+            </TouchableWithoutFeedback>
+          )}
+
           keyExtractor={ (item, index) => index.toString() }
         />
 
@@ -161,18 +181,16 @@ export default class App extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
+
   render() {
+
+    const { navigation } = this.props;
+    const comment = navigation.getParam('comment', 'error: no comment found');
+
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-        <Button
-          title="Go to Details... again"
-          onPress={() => this.props.navigation.push('Details')}
-        />
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
+        <Text>{comment}</Text>
+
         <Button
           title="Go back"
           onPress={() => this.props.navigation.goBack()}
