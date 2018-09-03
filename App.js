@@ -1,6 +1,6 @@
 //using react navigation!
 import React , { Component } from 'react';
-import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList, TouchableWithoutFeedback } from 'react-native';
+import { Button, View, Text, Alert, TextInput, StyleSheet, ScrollView, FlatList, TouchableWithoutFeedback, AsyncStorage} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 const styles = StyleSheet.create({
@@ -86,6 +86,7 @@ class HomeScreen extends React.Component {
 
       super();
 
+
       this.state = {
 
           comment: '',
@@ -102,7 +103,57 @@ class HomeScreen extends React.Component {
 
       };
 
+
   }
+
+
+  async componentDidMount(){
+
+//Alert.alert('works.');
+    //load data
+
+
+//try{
+const value=await AsyncStorage.getItem('blabla');
+//}catch (error){}
+
+if (value !== null) {
+
+  this.setState((prevState)=>{return {SampleArray:JSON.parse(value)};})
+}
+
+
+/*   try {
+         this.setState((prevState)=>{return {value:await AsyncStorage.getItem('list')};})
+      if (value !== null) {
+        // We have data!!
+        this.setState((prevState)=>{return {SampleArray:JSON.parse(value)};})
+      }
+     } catch (error) {
+       // Error retrieving data
+     }
+
+/*
+try {
+  await AsyncStorage.setItem('bla', JSON.stringify(SampleArray));
+} catch (error) {
+  // Error saving data
+}
+
+try {
+  const myArray = await AsyncStorage.getItem('bla');
+  if (myArray !== null) {
+    // We have data!!
+    console.log(JSON.parse(myArray));
+  }
+} catch (error) {
+  // Error retrieving data
+}
+*/
+
+
+  }
+
 
   onAdd() {
 
@@ -115,6 +166,17 @@ class HomeScreen extends React.Component {
  this.setState((prevState)=>{return {SampleArray:[...prevState.SampleArray, obj],nextID:prevState.nextID+1,comment:''};})
  //Key is unique, checked with code below.
  //Alert.alert(obj.key.toString());
+
+ //save data
+
+ AsyncStorage.setItem('blabla', JSON.stringify(this.state.SampleArray));
+ /*
+ try {
+    await AsyncStorage.setItem('list', JSON.stringify(SampleArray));
+  } catch (error) {
+    // Error saving data
+  }
+*/
 }
 
 }
