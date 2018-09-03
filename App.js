@@ -107,7 +107,13 @@ class HomeScreen extends React.Component {
   }
 
 
-  async componentDidMount(){
+ componentDidMount(){
+
+  this.reloadList();
+
+  }
+
+  async reloadList(){
 
 //Alert.alert('works.');
     //load data
@@ -121,35 +127,6 @@ if (value !== null) {
 
   this.setState((prevState)=>{return {SampleArray:JSON.parse(value)};})
 }
-
-
-/*   try {
-         this.setState((prevState)=>{return {value:await AsyncStorage.getItem('list')};})
-      if (value !== null) {
-        // We have data!!
-        this.setState((prevState)=>{return {SampleArray:JSON.parse(value)};})
-      }
-     } catch (error) {
-       // Error retrieving data
-     }
-
-/*
-try {
-  await AsyncStorage.setItem('bla', JSON.stringify(SampleArray));
-} catch (error) {
-  // Error saving data
-}
-
-try {
-  const myArray = await AsyncStorage.getItem('bla');
-  if (myArray !== null) {
-    // We have data!!
-    console.log(JSON.parse(myArray));
-  }
-} catch (error) {
-  // Error retrieving data
-}
-*/
 
 
   }
@@ -192,6 +169,7 @@ actionOnRow(item) {
 }
 
   render() {
+    //this.reloadList();
     return (
 //shows notes + locations
 
